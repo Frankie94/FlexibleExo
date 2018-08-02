@@ -42,7 +42,19 @@ while True:
     datas =''.join(map(lambda x:('/x' if len(hex(x))>=4 else '/x0')+hex(x)[2:],n))
     
     new_datas = datas.split("/x")
-    need = new_datas[5]+new_datas[6]+new_datas[7]+new_datas[8]
+    
+    for i in range(1,15):
+        if new_datas[i] == "02" and new_datas[i+1] == "28":
+            if i <= 10:
+                need = new_datas[i+2]+new_datas[i+3]+new_datas[i+4]+new_datas[i+5]
+            elif i == 11:
+                need = new_datas[13]+new_datas[14]+new_datas[15]+new_datas[1]
+            elif i == 12:
+                need = new_datas[14]+new_datas[15]+new_datas[1]+new_datas[2]
+            elif i == 13:
+                need = new_datas[15]+new_datas[1]+new_datas[2]+new_datas[3]
+            elif i == 14:
+                need = new_datas[1]+new_datas[2]+new_datas[3]+new_datas[4]                
     
     print(local_time,datas,need) 
    
